@@ -1,0 +1,128 @@
+apiVersion: 1.0.0
+name: CreateCluster
+kind: clusterConfig
+spec:
+  clusterSize:
+    default:
+      XL:
+        instance_type_master: r5.4xlarge
+        instance_num_on_demand_master: 1
+        instance_num_spot_master: 2
+        instance_ebs_size_master: 100
+        spot_bid_percentage_of_on_demand_master: 50
+        instance_type_core: r5.4xlarge
+        instance_num_on_demand_core: 2
+        instance_num_spot_core: 3
+        instance_ebs_size_core: 100
+        spot_bid_percentage_of_on_demand_core: 50
+        instance_type_task: r5.4xlarge
+        instance_num_on_demand_task: 3
+        instance_num_spot_task: 5
+        instance_ebs_size_task: 100
+        spot_bid_percentage_of_on_demand_task: 50
+        spot_provisioning_timeout_master: 90
+        spot_provisioning_timeout_core: 90
+        spot_provisioning_timeout_task: 90
+        spot_timeout_to_on_demand_master: True
+        spot_timeout_to_on_demand_core: True
+        spot_timeout_to_on_demand_task: True
+      L:
+        instance_type_master: r5.4xlarge
+        instance_num_on_demand_master: 1
+        instance_num_spot_master: 0
+        instance_ebs_size_master: 100
+        spot_bid_percentage_of_on_demand_master: 50
+        instance_type_core: r5.4xlarge
+        instance_num_on_demand_core: 1
+        instance_num_spot_core: 1
+        instance_ebs_size_core: 100
+        spot_bid_percentage_of_on_demand_core: 50
+        instance_type_task: r5.4xlarge
+        instance_num_on_demand_task: 1
+        instance_num_spot_task: 2
+        instance_ebs_size_task: 100
+        spot_bid_percentage_of_on_demand_task: 50
+        spot_provisioning_timeout_master: 90
+        spot_provisioning_timeout_core: 90
+        spot_provisioning_timeout_task: 90
+        spot_timeout_to_on_demand_master: True
+        spot_timeout_to_on_demand_core: True
+        spot_timeout_to_on_demand_task: True
+      M:
+        instance_type_master: r5.4xlarge
+        instance_num_on_demand_master: 1
+        instance_num_spot_master: 1
+        instance_ebs_size_master: 100
+        spot_bid_percentage_of_on_demand_master: 50
+        instance_type_core: r5.4xlarge
+        instance_num_on_demand_core: 1
+        instance_num_spot_core: 1
+        instance_ebs_size_core: 100
+        spot_bid_percentage_of_on_demand_core: 50
+        instance_type_task: r5.4xlarge
+        instance_num_on_demand_task: 0
+        instance_num_spot_task: 0
+        instance_ebs_size_task: 0
+        spot_bid_percentage_of_on_demand_task: 0
+        spot_provisioning_timeout_master: 90
+        spot_provisioning_timeout_core: 90
+        spot_provisioning_timeout_task: 90
+        spot_timeout_to_on_demand_master: True
+        spot_timeout_to_on_demand_core: True
+        spot_timeout_to_on_demand_task: True
+      S:
+        instance_type_master: r5.4xlarge
+        instance_num_on_demand_master: 1
+        instance_num_spot_master: 1
+        instance_ebs_size_master: 100
+        spot_bid_percentage_of_on_demand_master: 50
+        instance_type_core: r5.4xlarge
+        instance_num_on_demand_core: 1
+        instance_num_spot_core: 0
+        instance_ebs_size_core: 100
+        spot_bid_percentage_of_on_demand_core: 0
+        instance_type_task: r5.4xlarge
+        instance_num_on_demand_task: 0
+        instance_num_spot_task: 0
+        instance_ebs_size_task: 0
+        spot_bid_percentage_of_on_demand_task: 0
+        spot_provisioning_timeout_master: 90
+        spot_provisioning_timeout_core: 90
+        spot_provisioning_timeout_task: 90
+        spot_timeout_to_on_demand_master: True
+        spot_timeout_to_on_demand_core: True
+        spot_timeout_to_on_demand_task: True
+  appVersion:
+    spark:
+      2.4.4 : emr-5.28.0
+      2.4.3 : emr-5.26.0
+      2.4.2 : emr-5.24.1
+    presto:
+      0.227: emr-5.28.0
+      0.224: emr-5.27.0
+  clusterParamSet:
+    default:
+      logging_s3_path: s3://glue-crawler-test-maheshda/
+      bootstraps_paths:
+      - s3://beamline-us-east-1-beta/bootstrap-scripts/emr-bootstrap.sh
+      subnet_id: subnet-09ca6127
+      emr_ec2_role: EMR_EC2_DefaultRole
+      emr_role: EMR_DefaultRole
+      ebs_root_volume_size: 15
+      num_concurrent_steps: 1
+      python3: True
+      spark_glue_catalog: True
+      hive_glue_catalog: True
+      presto_glue_catalog: True
+      debugging: True
+      applications:
+      - Presto
+      - Spark
+      - Livy
+      visible_to_all_users: True
+      key_pair_name: maheshda
+      security_group_master: sg-0c11c5dde904f6406
+      security_group_slave: sg-0c11c5dde904f6406
+      maximize_resource_allocation: True
+      keep_cluster_alive_when_no_steps: True
+      termination_protected: True
