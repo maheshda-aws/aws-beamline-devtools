@@ -1,8 +1,8 @@
 
 # AWSBeamlineDevtools
-AWS Beamline Devtools is an environment users to perform interactive data analysis  using jupyter notebooks with Spark on EMR. This command line utility makes it easy for analysts and data engineers to manage dedicated or shared sandbox spark clusters on EMR. 
+AWS Beamline Devtools is a utility for users to perform interactive data analysis  using jupyter notebooks on top of Spark on EMR. This command line tool makes it easy for analysts and data engineers to manage dedicated or shared sandbox spark clusters on EMR for interactive querying and development. 
 
-Users can attach their notebook instance with existing shared/dedicated EMR cluster or they can also create a new cluster by providing appropriate parameter. 
+Users can attach their notebook instances with existing shared/dedicated EMR cluster or they can also create a new EMR cluster by providing appropriate parameters. 
 
 ## Architecture Diagram
 ![Architecture](https://i.ibb.co/kKHdB6r/Beamline-Dev-Tools.jpg)
@@ -12,11 +12,12 @@ Please refer to: https://aws.amazon.com/blogs/machine-learning/build-amazon-sage
 
 ## Set up
 
- - As a prerequisite, please makesure the role associated with notebook instance has access to create new EMR cluster if you intent to create one.
- - Please make sure the security group attached with EMR master node allows traffice from the security group of the notebook instance.
- - Create a sagemaker notebook lifecycle configuration by copying the content from `notebook-lifecycle-config.sh`
- - Spin up a sagemaker notebook server using the above lifecycle config
- - Open the terminal once the server is ready
+ - As a prerequisite, please make sure the role associated with notebook instance has access to create new EMR clusters if you intend to create one.
+ - Please make sure the security group associated with EMR master node allows traffic from the security group of the notebook instance.
+ - Go to AWS console and create a sagemaker notebook lifecycle configuration by copying the content from `notebook-lifecycle-config.sh`
+ - Spin up a sagemaker notebook server using the lifecycle configuration created.
+ - Open the terminal on the notebook instance once the server is ready.
+ - Execute `./attach-emr` cli
 
 ## CLI usage
 
