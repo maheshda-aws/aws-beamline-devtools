@@ -36,4 +36,8 @@ Please refer to: https://aws.amazon.com/blogs/machine-learning/build-amazon-sage
                             Config file provided externally, Default: emr.yaml
       -p PARAM_SET_NAME, --paramSetName=PARAM_SET_NAME
                             Parameter set name, See: emr.yaml
+              
+## Other helpful AWS commands
+
+`aws emr list-clusters --active`
 
